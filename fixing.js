@@ -22,18 +22,16 @@ const result = []
 for (let i = 0; i < lines.length; i++) {
   const line = lines[i]
 
+
+  const lineWithoutWhiteSpace = line.replace(/\s/g, "");
   console.log(line)
-  // if(line === '  - '){
-  if(line.startsWith('  - ') && 4 === line.length){
-    console.log(2222222)
+  if(lineWithoutWhiteSpace === '-'){
     // do nothing
   } else if(line.includes('type:')){
     result.push(line.replace("type:", "- type:"))
   } else if(line.includes('title:')){
     const lineToPush = line.replace("title: ", "  title: \"") + "\""
     result.push(lineToPush)
-    // console.log(lineToPush)
-    // result.push(line.replace("title: ", "  title: \"").concat("\""))
   } else if(line.includes('link:')){
     result.push(line.replace("link:", "  link:"))
   } else {
